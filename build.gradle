@@ -5,7 +5,7 @@ sourceCompatibility = 1.7
 version = '1.0'
 jar {
     manifest {
-        attributes 'Implementation-Title': 'Gradle Quickstart', 'Implementation-Version': version
+        attributes 'Implementation-Title': 'Huffman Encoder/Decoder', 'Implementation-Version': 1.0 , 'Main-Class':'edu.nyu.cs.jx379.huffman.Huffman'
     }
 }
 
@@ -19,7 +19,15 @@ dependencies {
 }
 
 test {
-    systemProperties 'property': 'value'
+    //systemProperties 'property': 'value'
+    beforeTest { descriptor ->
+     logger.lifecycle("Running test: " + descriptor)
+  	}
+  	
+  	onOutput { descriptor, event ->
+     logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message )
+  	}
+  	
 }
 
 uploadArchives {
