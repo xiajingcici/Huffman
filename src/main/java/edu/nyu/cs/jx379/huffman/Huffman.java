@@ -2,12 +2,19 @@ package edu.nyu.cs.jx379.huffman;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.PriorityQueue;
 
+/**
+ * @author Jing Xia
+ *
+ */
 public class Huffman {
 
-	// get each character and its occurrence map
+	/**
+	 * @param s	The input string.
+	 * @return
+	 * get each character and its occurrence map
+	 */
 	public static Map<Character, Integer> getFrequencyMap(String s) {
 		if (s == null)
 			throw new NullPointerException("Input String cannot be null");
@@ -26,7 +33,11 @@ public class Huffman {
 		return map;
 	}
 
-	// build Huffman Tree using the output data from getFrequencyMap
+	/**
+	 * @param map	The FrequencyMap
+	 * @return
+	 * build Huffman Tree using the output data from getFrequencyMap
+	 */
 	public static TreeNode buildHuffmanTree(Map<Character, Integer> map) {
 		// store TreeNode in PriorityQueue according to frequencies
 		PriorityQueue<TreeNode> pq = new PriorityQueue<TreeNode>();
@@ -52,7 +63,12 @@ public class Huffman {
 		return pq.poll();
 	}
 
-	// DFS the Huffman tree, add 0/1 recursively
+	/**
+	 * @param node	The huffman tree.
+	 * @param map	The char/huffman code mapping map.
+	 * @param s		The string for recording 0/1.
+	 * Traversal the Huffman tree, add 0/1 recursively
+	 */
 	private static void getMapping(TreeNode node, Map<Character, String> map,
 			String s) {
 		// base case: node is a leaf node
@@ -64,8 +80,12 @@ public class Huffman {
 		getMapping(node.getLeft(), map, s + "0");
 		getMapping(node.getRight(), map, s + "1");
 	}
-
-	// get character and its encode, for example: a->11
+ 
+	/**
+	 * @param node	The huffman tree.
+	 * @return		The char/huffman code mapping map.
+	 * get character and its encode, for example: a->11
+	 */
 	public static Map<Character, String> getWholeMap(TreeNode node) {
 		Map<Character, String> map = new HashMap<Character, String>();
 		String s = "";
@@ -73,7 +93,12 @@ public class Huffman {
 		return map;
 	}
 
-	// encode a given string using the Huffman Tree
+	/**
+	 * @param oriStr	The original string.
+	 * @param root		The huffman tree.
+	 * @return			The encode string.
+	 * encode a given string using the Huffman Tree
+	 */
 	public static String encode(String oriStr, TreeNode root) {
 		if (oriStr == null || oriStr.isEmpty()) {
 			return "";
@@ -90,7 +115,12 @@ public class Huffman {
 		return result.toString();
 	}
 
-	// decode a giving binary string to an ordinary string
+	/**
+	 * @param binaryStr	The encoded string with 0/1.
+	 * @param root		The huffman tree.
+	 * @return			The original string.
+	 * decode a giving binary string to an ordinary string
+	 */
 	public static String decode(String binaryStr, TreeNode root) {
 		StringBuilder result = new StringBuilder();
 		char[] bArray = binaryStr.toCharArray();
