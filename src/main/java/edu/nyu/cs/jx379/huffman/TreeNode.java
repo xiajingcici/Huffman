@@ -1,12 +1,13 @@
 package edu.nyu.cs.jx379.huffman;
 
+//TreeNode is data structure for the Huffman Tree Node.
 public class TreeNode implements Comparable<TreeNode> {
-	int frequence;
-	char character;
-	TreeNode left;
-	TreeNode right;
+	private int frequence;
+	private char character;
+	private TreeNode left;
+	private TreeNode right;
 
-	TreeNode(char c, int f) {
+	public TreeNode(char c, int f) {
 		frequence = f;
 		character = c;
 	}
@@ -17,6 +18,38 @@ public class TreeNode implements Comparable<TreeNode> {
 		} else {
 			return 1;
 		}
+	}
+
+	public int getFrequence() {
+		return frequence;
+	}
+
+	public void setFrequence(int frequence) {
+		this.frequence = frequence;
+	}
+
+	public char getCharacter() {
+		return character;
+	}
+
+	public void setCharacter(char character) {
+		this.character = character;
+	}
+
+	public TreeNode getLeft() {
+		return left;
+	}
+
+	public void setLeft(TreeNode left) {
+		this.left = left;
+	}
+
+	public TreeNode getRight() {
+		return right;
+	}
+
+	public void setRight(TreeNode right) {
+		this.right = right;
 	}
 
 }
