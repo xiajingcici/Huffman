@@ -1,4 +1,4 @@
-Huffman encoding allows us to change ordinary string to binary stream, which is safe for date transmission. For example, "ccaffffaa"---->"100100110000"
+Huffman encoding allows us to change ordinary string to binary stream, which is safe for data transmission. For example, "ccaffffaa"---->"100100110000"
 
 On contrary, Huffman decoding converts the binary stream into ordinary string. For example, "100100110000"---->"ccaffffaa"
 
